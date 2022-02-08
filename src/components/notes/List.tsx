@@ -9,11 +9,22 @@ import { useSelector } from 'react-redux';
 import './List.scss';
 
 export const List = () => {
-    const notes: Note[] = useSelector((state: RootState) => state.notes.all);
+    const notes: Note[] = useSelector((state: RootState) => {
+        const { searchString } = state.notes;
+        if (searchString) {
+            return state.notes.all.filter((note) => {
+                return (
+                    note.title.indexOf(searchString) !== -1 ||
+                    note.desc.indexOf(searchString) !== -1
+                );
+            });
+        } else {
+            return state.notes.all;
+        }
+    });
     const dispatch = useDispatch();
 
     const handleNoteFocus = (id: string) => {
-        console.log(`will be focused: ${id}`);
         dispatch(focus(id));
     };
 
