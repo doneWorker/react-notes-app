@@ -1,9 +1,5 @@
-import './List.scss';
+import './Empty.scss';
 
 export const Empty = () => {
-    return (
-        <div className="notes-empty" >
-            No Records found
-        </div>
-    )
-}
+    return <div className="notes-empty">No Records found</div>;
+};
