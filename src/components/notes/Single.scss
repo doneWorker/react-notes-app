@@ -1,0 +1,26 @@
+@import "../../globals";
+
+.single-note {
+  width: $noteWidth;
+  height: $mainHeight;
+  padding: 25px 15px;
+
+  &__title,
+  &__desc {
+    width: 100%;
+    border: none;
+    outline: none;
+  }
+
+  &__title {
+    width: 100%;
+    border: none;
+    outline: none;
+    font-size: $fontSizeBig;
+  }
+
+  &__desc {
+    font-family: unset;
+    font-size: $fontSizeMedium;
+  }
+}

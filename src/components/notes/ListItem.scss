@@ -5,8 +5,8 @@
   width: 100%;
   height: $noteLIHeight;
   padding: 25px 15px;
-}
 
-.notes-item:nth-child(even) {
-  background: $gray;
+  &:nth-child(even) {
+    background: $gray;
+  }
 }

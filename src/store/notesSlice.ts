@@ -14,6 +14,12 @@ const initialState: NotesState = {
     searchString: '',
 };
 
+interface UpdateNotePayload {
+    id: string;
+    title?: string;
+    desc?: string;
+}
+
 export const createEmptyNote = (): Note => ({
     id: uuidv4(),
     title: '',
@@ -34,6 +40,24 @@ export const notesSlice = createSlice({
             state.selectedId = action.payload;
         },
 
+        updateTitle: (state, action: PayloadAction<UpdateNotePayload>) => {
+            const target = state.all.find(
+                (note) => note.id === action.payload.id
+            );
+
+            if (target && action.payload.title !== undefined)
+                target.title = action.payload.title;
+        },
+
+        updateDesc: (state, action: PayloadAction<UpdateNotePayload>) => {
+            const target = state.all.find(
+                (note) => note.id === action.payload.id
+            );
+
+            if (target && action.payload.desc !== undefined)
+                target.desc = action.payload.desc;
+        },
+
         delete: (state, action: PayloadAction<string>) => {
             state.all = state.all.filter((note) => note.id !== action.payload);
         },
@@ -52,6 +76,7 @@ export const notesSlice = createSlice({
     },
 });
 
-export const { create, setNeedle, focus } = notesSlice.actions;
+export const { create, setNeedle, focus, updateDesc, updateTitle } =
+    notesSlice.actions;
 
 export default notesSlice.reducer;
