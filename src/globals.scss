@@ -1,0 +1,21 @@
+/* General */
+$notesPerList: 5;
+
+/* Colours */
+$secondary: #535353;
+$gray: #f8f8f8;
+$grayDark: #e1e1e1;
+$primary: #1b69ff;
+
+/* Sizes */
+$headerHeight: 50px;
+$toolbarWidth: 85px;
+$noteWidth: 50vw;
+$mainHeight: calc(100vh - #{$headerHeight});
+$listWidth: calc(100vw - #{$toolbarWidth} - #{$noteWidth});
+$noteLIHeight: calc(#{$mainHeight} / #{$notesPerList});
+
+/* Fonts */
+$fontSizeSmall: 12px;
+$fontSizeMedium: 15px;
+$fontSizeBig: 20px;

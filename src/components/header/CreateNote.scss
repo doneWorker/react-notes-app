@@ -1,0 +1,15 @@
+@import "../../globals";
+
+.create-note {
+  cursor: pointer;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border: none;
+  background: transparent;
+  font-size: $fontSizeMedium;
+
+  svg {
+    margin-left: 10px;
+  }
+}

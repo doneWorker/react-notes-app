@@ -1,5 +1,1 @@
-export const Header = () => {
-    return (
-        <header>aa</header>
-    )
-}
+export { Header } from './Header';

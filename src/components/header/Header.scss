@@ -1,0 +1,10 @@
+@import "../../globals";
+
+header {
+  height: $headerHeight;
+  padding: 8px 0;
+  display: flex;
+  justify-content: center;
+  background: $gray;
+  border-bottom: 2px solid $grayDark;
+}

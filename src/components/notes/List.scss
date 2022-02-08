@@ -1,0 +1,7 @@
+@import "../../globals";
+
+.notes-list {
+  width: $listWidth;
+  height: $mainHeight;
+  overflow: scroll;
+}
