@@ -59,17 +59,20 @@ export const Single = () => {
                     <FaStar />
                 </button>
             </div>
-            <input
-                className={`${noteClass}__title`}
-                placeholder="Title"
-                value={note.title}
-                onChange={(e) => handleChangeTitle(e.target.value)}
-            />
-            <textarea
-                className={`${noteClass}__desc`}
-                value={note.desc}
-                onChange={(e) => handleChangeDesc(e.target.value)}
-            />
+            <div className={`${noteClass}__inner`}>
+                <input
+                    className={`${noteClass}__title`}
+                    placeholder="Title"
+                    value={note.title}
+                    onChange={(e) => handleChangeTitle(e.target.value)}
+                />
+                <textarea
+                    className={`${noteClass}__desc`}
+                    placeholder="Description"
+                    value={note.desc}
+                    onChange={(e) => handleChangeDesc(e.target.value)}
+                />
+            </div>
         </div>
     ) : (
         <IsNotSelected />
