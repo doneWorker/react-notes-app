@@ -58,7 +58,7 @@ export const notesSlice = createSlice({
                 target.desc = action.payload.desc;
         },
 
-        delete: (state, action: PayloadAction<string>) => {
+        deleteNote: (state, action: PayloadAction<string>) => {
             state.all = state.all.filter((note) => note.id !== action.payload);
         },
 
@@ -76,7 +76,7 @@ export const notesSlice = createSlice({
     },
 });
 
-export const { create, setNeedle, focus, updateDesc, updateTitle } =
+export const { create, setNeedle, focus, updateDesc, updateTitle, deleteNote } =
     notesSlice.actions;
 
 export default notesSlice.reducer;

@@ -3,7 +3,6 @@
 .single-note {
   width: $noteWidth;
   height: $mainHeight;
-  padding: 25px 15px;
 
   &__title,
   &__desc {
@@ -20,7 +19,35 @@
   }
 
   &__desc {
+    height: 100%;
+    resize: none;
     font-family: unset;
     font-size: $fontSizeMedium;
+  }
+
+  &__toolbar {
+    width: 100%;
+    height: 40px;
+    display: flex;
+    align-items: center;
+    padding: 0 20px;
+    background: $grayDark;
+
+    & > button {
+      font-size: $fontSizeBig;
+      border: none;
+      background: transparent;
+      transition: $defaultTransition;
+
+      &:hover {
+        transform: scale(1.04);
+      }
+
+      & > svg {
+        cursor: pointer;
+        margin-right: 20px;
+        fill: $grayDarker;
+      }
+    }
   }
 }
