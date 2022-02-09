@@ -12,18 +12,19 @@ export const List = () => {
     const dispatch = useDispatch();
     const notes: Note[] = useSelector((state: RootState) => {
         const searchString = state.filter.searchString.toLowerCase();
-        console.log(searchString);
+        const filter = state.filter.type;
 
-        if (searchString) {
-            return state.notes.all.filter((note) => {
+        return state.notes.all.filter((note) => {
+            if (filter === 'FAVORITE' && !note.favorite) return;
+            if (searchString) {
                 return (
                     note.title.toLowerCase().indexOf(searchString) !== -1 ||
                     note.desc.toLowerCase().indexOf(searchString) !== -1
                 );
-            });
-        } else {
-            return state.notes.all;
-        }
+            } else {
+                return note;
+            }
+        });
     });
 
     const handleNoteFocus = (id: string) => {

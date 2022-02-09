@@ -5,7 +5,7 @@ import {
     updateDesc,
     updateTitle,
     deleteNote,
-    addToFavorites,
+    toggleFavorites,
 } from '../../store/notesSlice';
 import { RootState } from '../../store';
 import { FaTrash, FaStar } from 'react-icons/fa';
@@ -36,7 +36,7 @@ export const Single = () => {
     };
 
     const handleAddToFavorites = () => {
-        note && dispatch(addToFavorites(note.id));
+        note && dispatch(toggleFavorites(note.id));
     };
 
     return note ? (
@@ -51,10 +51,12 @@ export const Single = () => {
                 </button>
                 <button
                     title="Add Note to favorite"
-                    className={`${noteClass}__toolbar-button`}
+                    className={`${noteClass}__toolbar-button ${
+                        note.favorite ? 'active' : ''
+                    }`}
                     onClick={handleAddToFavorites}
                 >
-                    <FaStar className={note.favorite ? 'active' : ''} />
+                    <FaStar />
                 </button>
             </div>
             <input

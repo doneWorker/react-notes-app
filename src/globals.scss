@@ -11,8 +11,8 @@ $primary: #1b69ff;
 
 /* Sizes */
 $headerHeight: 50px;
-$toolbarWidth: 85px;
-$noteWidth: 50vw;
+$toolbarWidth: 50px;
+$noteWidth: 60vw;
 $mainHeight: calc(100vh - #{$headerHeight});
 $listWidth: calc(100vw - #{$toolbarWidth} - #{$noteWidth});
 $noteLIHeight: calc(#{$mainHeight} / #{$notesPerList});

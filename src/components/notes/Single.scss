@@ -40,6 +40,10 @@
       background: transparent;
       transition: $defaultTransition;
 
+      &.active svg {
+        fill: $primary;
+      }
+
       &:hover {
         transform: scale(1.04);
       }

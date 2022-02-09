@@ -12,8 +12,8 @@
 
   &__button {
     cursor: pointer;
-    width: 35px;
-    height: 35px;
+    width: calc(#{$toolbarWidth} / 2);
+    height: calc(#{$toolbarWidth} / 2);
     margin-bottom: 20px;
     border: none;
     background: transparent;

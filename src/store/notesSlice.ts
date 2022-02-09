@@ -5,13 +5,11 @@ import { v4 as uuidv4 } from 'uuid';
 export interface NotesState {
     all: Array<Note>;
     selectedId: string | null;
-    searchString: string;
 }
 
 const initialState: NotesState = {
     all: [],
     selectedId: null,
-    searchString: '',
 };
 
 interface UpdateNotePayload {
@@ -64,12 +62,12 @@ export const notesSlice = createSlice({
             state.all = state.all.filter((note) => note.id !== payload);
         },
 
-        addToFavorites: (state, action: PayloadAction<string>) => {
+        toggleFavorites: (state, action: PayloadAction<string>) => {
             const toBeFavorite = state.all.find(
                 (note) => note.id === action.payload
             );
 
-            toBeFavorite && (toBeFavorite.favorite = true);
+            toBeFavorite && (toBeFavorite.favorite = !toBeFavorite.favorite);
         },
     },
 });
@@ -80,7 +78,7 @@ export const {
     updateDesc,
     updateTitle,
     deleteNote,
-    addToFavorites,
+    toggleFavorites,
 } = notesSlice.actions;
 
 export default notesSlice.reducer;
