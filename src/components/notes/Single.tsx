@@ -1,11 +1,20 @@
 import { useDispatch, useSelector } from 'react-redux';
 
 import { Note } from '../../models/Note';
-import { updateDesc, updateTitle, deleteNote } from '../../store/notesSlice';
+import {
+    updateDesc,
+    updateTitle,
+    deleteNote,
+    addToFavorites,
+} from '../../store/notesSlice';
 import { RootState } from '../../store';
 import { FaTrash, FaStar } from 'react-icons/fa';
 
 import './Single.scss';
+
+const noteClass = 'single-note';
+
+const IsNotSelected = () => <div className={noteClass}>Please Select Note</div>;
 
 export const Single = () => {
     const note: Note | undefined = useSelector((state: RootState) => {
@@ -26,36 +35,41 @@ export const Single = () => {
         note && dispatch(deleteNote(note.id));
     };
 
+    const handleAddToFavorites = () => {
+        note && dispatch(addToFavorites(note.id));
+    };
+
     return note ? (
-        <div className="single-note">
-            <div className="single-note__toolbar">
+        <div className={noteClass}>
+            <div className={`${noteClass}__toolbar`}>
                 <button
                     title="Delete Note"
-                    className="single-note__toolbar-button"
+                    className={`${noteClass}__toolbar-button`}
                     onClick={handleDeleteNote}
                 >
                     <FaTrash />
                 </button>
                 <button
                     title="Add Note to favorite"
-                    className="single-note__toolbar-button"
+                    className={`${noteClass}__toolbar-button`}
+                    onClick={handleAddToFavorites}
                 >
-                    <FaStar />
+                    <FaStar className={note.favorite ? 'active' : ''} />
                 </button>
             </div>
             <input
-                className="single-note__title"
+                className={`${noteClass}__title`}
                 placeholder="Title"
                 value={note.title}
                 onChange={(e) => handleChangeTitle(e.target.value)}
             />
             <textarea
-                className="single-note__desc"
+                className={`${noteClass}__desc`}
                 value={note.desc}
                 onChange={(e) => handleChangeDesc(e.target.value)}
             />
         </div>
     ) : (
-        <></>
+        <IsNotSelected />
     );
 };

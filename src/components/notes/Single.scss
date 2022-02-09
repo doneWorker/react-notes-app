@@ -16,10 +16,11 @@
     border: none;
     outline: none;
     font-size: $fontSizeBig;
+    line-height: 2;
   }
 
   &__desc {
-    height: 100%;
+    height: calc(#{$mainHeight} - 40px - 23px);
     resize: none;
     font-family: unset;
     font-size: $fontSizeMedium;

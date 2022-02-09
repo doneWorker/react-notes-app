@@ -1,6 +1,6 @@
 import { FaSearch } from 'react-icons/fa';
 
-import { setNeedle } from '../../store/notesSlice';
+import { setSearchString } from '../../store/filterSlice';
 
 import './Search.scss';
 import { useDispatch } from 'react-redux';
@@ -9,7 +9,7 @@ export const Search = () => {
     const dispatch = useDispatch();
 
     const handleNeedleChange = (needle: string) => {
-        dispatch(setNeedle(needle));
+        dispatch(setSearchString(needle));
     };
 
     return (

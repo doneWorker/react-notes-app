@@ -45,8 +45,9 @@ export const notesSlice = createSlice({
                 (note) => note.id === action.payload.id
             );
 
-            if (target && action.payload.title !== undefined)
-                target.title = action.payload.title;
+            target &&
+                action.payload.title !== undefined &&
+                (target.title = action.payload.title);
         },
 
         updateDesc: (state, action: PayloadAction<UpdateNotePayload>) => {
@@ -54,20 +55,17 @@ export const notesSlice = createSlice({
                 (note) => note.id === action.payload.id
             );
 
-            if (target && action.payload.desc !== undefined)
-                target.desc = action.payload.desc;
+            target &&
+                action.payload.desc !== undefined &&
+                (target.desc = action.payload.desc);
         },
 
-        deleteNote: (state, action: PayloadAction<string>) => {
-            state.all = state.all.filter((note) => note.id !== action.payload);
-        },
-
-        setNeedle: (state, action: PayloadAction<string>) => {
-            state.searchString = action.payload;
+        deleteNote: (state, { payload }: PayloadAction<string>) => {
+            state.all = state.all.filter((note) => note.id !== payload);
         },
 
         addToFavorites: (state, action: PayloadAction<string>) => {
-            let toBeFavorite = state.all.find(
+            const toBeFavorite = state.all.find(
                 (note) => note.id === action.payload
             );
 
@@ -76,7 +74,13 @@ export const notesSlice = createSlice({
     },
 });
 
-export const { create, setNeedle, focus, updateDesc, updateTitle, deleteNote } =
-    notesSlice.actions;
+export const {
+    create,
+    focus,
+    updateDesc,
+    updateTitle,
+    deleteNote,
+    addToFavorites,
+} = notesSlice.actions;
 
 export default notesSlice.reducer;

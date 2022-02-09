@@ -18,7 +18,8 @@
     border: none;
     background: transparent;
 
-    &:hover svg {
+    &:hover svg,
+    &.active svg {
       fill: $primary;
     }
 

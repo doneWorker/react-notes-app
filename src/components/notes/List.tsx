@@ -11,7 +11,8 @@ import './List.scss';
 export const List = () => {
     const dispatch = useDispatch();
     const notes: Note[] = useSelector((state: RootState) => {
-        const searchString = state.notes.searchString.toLowerCase();
+        const searchString = state.filter.searchString.toLowerCase();
+        console.log(searchString);
 
         if (searchString) {
             return state.notes.all.filter((note) => {
