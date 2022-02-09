@@ -31,7 +31,7 @@ export const notesSlice = createSlice({
     reducers: {
         create: (state) => {
             const emptyNote = createEmptyNote();
-            state.all.push(emptyNote);
+            state.all.unshift(emptyNote);
         },
 
         focus: (state, action: PayloadAction<string>) => {
