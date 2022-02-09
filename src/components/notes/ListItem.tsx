@@ -10,9 +10,18 @@ type ListItemProps = Partial<Note> & {
     onClick: Function;
 };
 
-export const ListItem = ({ title, desc, date, onClick }: ListItemProps) => {
+export const ListItem = ({
+    title,
+    desc,
+    date,
+    isSelected,
+    onClick,
+}: ListItemProps) => {
     return (
-        <div className="notes-item" onClick={() => onClick()}>
+        <div
+            className={`notes-item ${isSelected ? 'active' : ''}`}
+            onClick={() => onClick()}
+        >
             <div className="notes-item__headline">
                 <div>
                     <b>{title || 'New Note'}</b>

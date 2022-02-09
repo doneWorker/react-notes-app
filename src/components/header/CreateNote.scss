@@ -10,7 +10,9 @@
   border: none;
   background: transparent;
   font-size: $fontSizeMedium;
+  font-weight: $fontWeightBold;
   transition: $defaultTransition;
+  color: $grayDarker;
 
   svg {
     margin-left: 10px;

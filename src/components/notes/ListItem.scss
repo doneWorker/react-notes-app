@@ -14,4 +14,8 @@
   &:nth-child(even) {
     background: $gray;
   }
+
+  &.active {
+    background: $primaryLighter;
+  }
 }

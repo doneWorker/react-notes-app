@@ -6,6 +6,8 @@
 
   &__inner {
     height: calc(#{$mainHeight} - 40px);
+    display: flex;
+    flex-direction: column;
     padding: 15px;
   }
 
@@ -21,13 +23,16 @@
     border: none;
     outline: none;
     font-size: $fontSizeBig;
+    font-weight: $fontWeightBold;
     line-height: 2;
   }
 
   &__desc {
+    flex-grow: 1;
     resize: none;
     font-family: unset;
     font-size: $fontSizeMedium;
+    font-weight: $fontWeightMedium;
   }
 
   &__toolbar {
@@ -36,7 +41,7 @@
     display: flex;
     align-items: center;
     padding: 0 20px;
-    background: $grayDark;
+    background: $gray;
 
     & > button {
       font-size: $fontSizeBig;

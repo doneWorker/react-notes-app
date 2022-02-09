@@ -10,22 +10,28 @@ import './List.scss';
 
 export const List = () => {
     const dispatch = useDispatch();
-    const notes: Note[] = useSelector((state: RootState) => {
-        const searchString = state.filter.searchString.toLowerCase();
-        const filter = state.filter.type;
+    const [notes, selectedId]: [Note[], string | null] = useSelector(
+        (state: RootState) => {
+            const searchString = state.filter.searchString.toLowerCase();
+            const filter = state.filter.type;
 
-        return state.notes.all.filter((note) => {
-            if (filter === 'FAVORITE' && !note.favorite) return;
-            if (searchString) {
-                return (
-                    note.title.toLowerCase().indexOf(searchString) !== -1 ||
-                    note.desc.toLowerCase().indexOf(searchString) !== -1
-                );
-            } else {
-                return note;
-            }
-        });
-    });
+            return [
+                state.notes.all.filter((note) => {
+                    if (filter === 'FAVORITE' && !note.favorite) return;
+                    if (searchString) {
+                        return (
+                            note.title.toLowerCase().indexOf(searchString) !==
+                                -1 ||
+                            note.desc.toLowerCase().indexOf(searchString) !== -1
+                        );
+                    } else {
+                        return note;
+                    }
+                }),
+                state.notes.selectedId,
+            ];
+        }
+    );
 
     const handleNoteFocus = (id: string) => {
         dispatch(focus(id));
@@ -39,6 +45,7 @@ export const List = () => {
                 notes.map((note) => (
                     <ListItem
                         onClick={() => handleNoteFocus(note.id)}
+                        isSelected={selectedId === note.id}
                         key={note.id}
                         {...note}
                     />
