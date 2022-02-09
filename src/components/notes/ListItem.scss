@@ -6,6 +6,11 @@
   height: $noteLIHeight;
   padding: 25px 15px;
 
+  time {
+    float: right;
+    font-weight: bold;
+  }
+
   &:nth-child(even) {
     background: $gray;
   }
