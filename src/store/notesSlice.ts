@@ -1,6 +1,8 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
 import { Note } from '../models/Note';
 import { v4 as uuidv4 } from 'uuid';
+import { useSelector } from 'react-redux';
+import { RootState } from './index';
 
 export interface NotesState {
     all: Array<Note>;

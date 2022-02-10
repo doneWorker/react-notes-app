@@ -16,7 +16,7 @@ export const ListItem = ({
     date,
     isSelected,
     onClick,
-}: ListItemProps) => {
+}: ListItemProps): JSX.Element => {
     return (
         <div
             className={`notes-item ${isSelected ? 'active' : ''}`}

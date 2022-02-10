@@ -14,13 +14,17 @@ import './Single.scss';
 
 const noteClass = 'single-note';
 
-const IsNotSelected = () => <div className={noteClass}>Please Select Note</div>;
+const selectedNoteSelector = (state: RootState): Note | undefined => {
+    const { selectedId } = state.notes;
+    return state.notes.all.find((note) => note.id === selectedId);
+};
 
-export const Single = () => {
-    const note: Note | undefined = useSelector((state: RootState) => {
-        const { selectedId } = state.notes;
-        return state.notes.all.find((note) => note.id === selectedId);
-    });
+const IsNotSelected = (): JSX.Element => (
+    <div className={noteClass}>Please Select Note</div>
+);
+
+export const Single = (): JSX.Element => {
+    const note = useSelector(selectedNoteSelector);
     const dispatch = useDispatch();
 
     const handleChangeTitle = (title: string) => {
