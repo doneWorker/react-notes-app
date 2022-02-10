@@ -1,3 +1,4 @@
+import { useCallback } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 
 import { Note } from '../../models/Note';
@@ -35,9 +36,9 @@ export const List = (): JSX.Element => {
     const [notes, selectedId]: [Note[], string | null] =
         useSelector(notesSelector);
 
-    const handleNoteFocus = (id: string) => {
+    const handleNoteFocus = useCallback((id: string) => {
         dispatch(focus(id));
-    };
+    }, []);
 
     return (
         <div className="notes-list">
@@ -46,10 +47,10 @@ export const List = (): JSX.Element => {
             ) : (
                 notes.map((note) => (
                     <ListItem
-                        onClick={() => handleNoteFocus(note.id)}
-                        isSelected={selectedId === note.id}
                         key={note.id}
                         {...note}
+                        isSelected={selectedId === note.id}
+                        onClick={handleNoteFocus}
                     />
                 ))
             )}
